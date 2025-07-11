@@ -1,0 +1,31 @@
+name: go-dev-stack
+
+services:
+  dev:
+    # 建議放跟 Dockerfile 同層；改路徑請同步 context
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: go-dev
+    user: root
+
+    env_file:
+      - ./devcontainer.env
+
+    volumes:
+      # 你的程式碼 / Go module cache / Claude 設定檔
+      - ..:/workspace
+      - claudeCfg:/home/root/.claude
+    # ports:
+    #   - "8080:8080"
+    networks:
+      - app-net
+
+# ------ 全局資源 ------
+volumes:
+  claudeCfg:
+    name: claudeCfg
+
+networks:
+  app-net:
+    driver: bridge

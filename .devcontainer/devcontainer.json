@@ -1,0 +1,29 @@
+{
+    "name": "RUN Go Dev",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "dev",
+    "workspaceFolder": "/workspace",
+    // ======= DevContainer Features =======
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainers/features/common-utils:2": {}
+    },
+    // ======= Env =======
+    "containerEnv": {
+        "GOFLAGS": "-buildvcs=false"
+    },
+    // ======= VS Code Extensions =======
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "golang.go",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+    // ======= Workspace Mount =======
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ],
+    "remoteUser": "root"
+}
