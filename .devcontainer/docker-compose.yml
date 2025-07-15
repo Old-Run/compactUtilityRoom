@@ -1,4 +1,4 @@
-name: go-dev-stack
+name: golang-dev
 
 services:
   dev:
@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: go-dev
-    user: root
+    user: vscode
 
     env_file:
       - ./devcontainer.env
@@ -15,16 +15,11 @@ services:
     volumes:
       # 你的程式碼 / Go module cache / Claude 設定檔
       - ..:/workspace
-      - claudeCfg:/home/root/.claude
+    
     # ports:
     #   - "8080:8080"
     networks:
       - app-net
-
-# ------ 全局資源 ------
-volumes:
-  claudeCfg:
-    name: claudeCfg
 
 networks:
   app-net:

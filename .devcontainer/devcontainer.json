@@ -1,5 +1,5 @@
 {
-    "name": "RUN Go Dev",
+    "name": "golang-dev",
     "dockerComposeFile": "docker-compose.yml",
     "service": "dev",
     "workspaceFolder": "/workspace",
@@ -23,7 +23,8 @@
     },
     // ======= Workspace Mount =======
     "mounts": [
-        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.config/anthropic,target=/home/vscode/.config/anthropic,type=bind,consistency=cached"
     ],
-    "remoteUser": "root"
+    "remoteUser": "vscode"
 }
